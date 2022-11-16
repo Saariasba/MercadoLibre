@@ -1,24 +1,28 @@
 package com.santi.mercadolibre.ui.component
 
-import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.santi.mercadolibre.TextFieldState
-import com.santi.mercadolibre.ui.theme.MercadoLibreTheme
+import com.santi.mercadolibre.viewmodels.MainViewModel
+
 
 @Composable
-fun SearchBar(searchState: TextFieldState = remember { TextFieldState() }) {
+fun SearchBar(
+    mainViewModel: MainViewModel
+) {
+    val keyword: String by mainViewModel.keyword.observeAsState(initial = "")
     TextField(
-        value = searchState.text,
-        onValueChange = {
-            searchState.text = it
-        },
+        value = keyword,
+        onValueChange = { mainViewModel.getSearch(it) },
         leadingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,
@@ -30,14 +34,4 @@ fun SearchBar(searchState: TextFieldState = remember { TextFieldState() }) {
             .fillMaxWidth()
             .background(color = MaterialTheme.colors.background)
     )
-}
-
-@Preview(showBackground = true)
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-fun SearchBarPreview() {
-    MercadoLibreTheme {
-        var searchState = remember { TextFieldState() }
-        SearchBar(searchState)
-    }
 }

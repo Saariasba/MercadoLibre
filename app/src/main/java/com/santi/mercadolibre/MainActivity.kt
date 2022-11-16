@@ -9,7 +9,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,7 +29,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MercadoLibreTheme {
-                DefaultPreview()
+                PrincipalComponent(mainViewModel = mainViewModel)
             }
         }
         listener()
@@ -40,33 +39,26 @@ class MainActivity : ComponentActivity() {
         mainViewModel.res.observe(this, Observer {
             when (it.status) {
                 Status.SUCCESS -> {
-                    Toast.makeText(this, "Good: $it", Toast.LENGTH_SHORT).show()
                     Log.d("Prueba", "Bien: $it")
                 }
                 Status.LOADING -> {
-                    Toast.makeText(this, "Loading: $it", Toast.LENGTH_SHORT).show()
+
                 }
                 Status.ERROR -> {
-                    Toast.makeText(this, "Error: $it", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Error en la busqueda", Toast.LENGTH_LONG).show()
                 }
             }
         })
     }
 }
 
-class TextFieldState() {
-    var text: String by mutableStateOf("")
-}
-
 @Composable
-fun PrincipalComponent() {
+fun PrincipalComponent(mainViewModel: MainViewModel) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        val searchState = remember { TextFieldState() }
-        SearchBar(searchState)
-        Text(text = searchState.text)
+        SearchBar(mainViewModel)
     }
 }
 
@@ -75,6 +67,6 @@ fun PrincipalComponent() {
 @Composable
 fun DefaultPreview() {
     MercadoLibreTheme {
-        PrincipalComponent()
+        //SearchBar(MainViewModel())
     }
 }

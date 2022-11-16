@@ -7,6 +7,6 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("/products/search?status=active&site_id=MLA")
+    @GET("/sites/MCO/search")
     suspend fun getSearch(@Query("q") keyword: String): Response<SearchResponse>
 }
