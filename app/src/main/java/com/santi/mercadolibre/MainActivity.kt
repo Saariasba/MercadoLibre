@@ -1,15 +1,17 @@
 package com.santi.mercadolibre
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.santi.mercadolibre.ui.component.SearchBar
 import com.santi.mercadolibre.ui.theme.MercadoLibreTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,27 +19,34 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MercadoLibreTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
-                }
+                DefaultPreview()
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+class TextFieldState(){
+    var text: String by mutableStateOf("")
 }
 
-@Preview(showBackground = true)
+@Composable
+fun PrincipalComponent() {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        val searchState = remember { TextFieldState() }
+        SearchBar(searchState)
+        Text(text = searchState.text)
+
+    }
+}
+
+@Preview(showSystemUi = true)
+@Preview(showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun DefaultPreview() {
     MercadoLibreTheme {
-        Greeting("Android")
+        PrincipalComponent()
     }
 }
