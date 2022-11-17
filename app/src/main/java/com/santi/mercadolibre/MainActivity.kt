@@ -2,21 +2,20 @@ package com.santi.mercadolibre
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.Observer
+import com.santi.mercadolibre.ui.component.ProductsList
 import com.santi.mercadolibre.ui.component.SearchBar
 import com.santi.mercadolibre.ui.theme.MercadoLibreTheme
-import com.santi.mercadolibre.utils.Status
 import com.santi.mercadolibre.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,10 +35,11 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun listener() {
-        mainViewModel.res.observe(this, Observer {
-            when (it.status) {
+        mainViewModel.res.observe(this, Observer { response ->
+            /*when (response.status) {
                 Status.SUCCESS -> {
-                    Log.d("Prueba", "Bien: $it")
+                    Log.d("Prueba", "Bien: $response")
+                    products.value = response.data.results
                 }
                 Status.LOADING -> {
 
@@ -47,18 +47,21 @@ class MainActivity : ComponentActivity() {
                 Status.ERROR -> {
                     Toast.makeText(this, "Error en la busqueda", Toast.LENGTH_LONG).show()
                 }
-            }
+            }*/
         })
     }
 }
 
 @Composable
 fun PrincipalComponent(mainViewModel: MainViewModel) {
+    val products by mainViewModel.products.observeAsState(initial = listOf())
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         SearchBar(mainViewModel)
+        ProductsList(products)
     }
 }
 

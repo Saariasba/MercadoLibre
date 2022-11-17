@@ -2,17 +2,17 @@ package com.santi.mercadolibre.models
 
 data class SearchResponse(
     val keywords: String? = "",
-    val paging: Paging? = null,
-    val results: List<Result>? = null
+    val paging: ResponsePaging? = null,
+    val results: List<ResponseResult>? = null
 )
 
-data class Paging(
+data class ResponsePaging(
     val total: Int? = 0,
     val offset: Int? = 0,
     val limit: Int? = 0
 )
 
-data class Result(
+data class ResponseResult(
     val id: String? = "",
     val site_id: String? = "",
     val price: String? = "",

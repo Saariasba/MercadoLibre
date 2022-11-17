@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import com.santi.mercadolibre.viewmodels.MainViewModel
 
 
@@ -29,7 +30,13 @@ fun SearchBar(
                 contentDescription = "emailIcon"
             )
         },
-        placeholder = { Text(text = "Buscar en MercadoLibre") },
+        textStyle = TextStyle(color = MaterialTheme.colors.onBackground),
+        placeholder = {
+            Text(
+                text = "Buscar en MercadoLibre",
+                color = MaterialTheme.colors.onBackground
+            )
+        },
         modifier = Modifier
             .fillMaxWidth()
             .background(color = MaterialTheme.colors.background)
