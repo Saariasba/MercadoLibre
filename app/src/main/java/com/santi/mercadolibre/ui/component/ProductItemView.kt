@@ -9,27 +9,31 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
-import coil.request.ImageRequest
-import coil.transform.CircleCropTransformation
 import com.santi.mercadolibre.models.ResponseResult
+import com.santi.mercadolibre.navigation.AppScreens
 import com.santi.mercadolibre.ui.theme.MercadoLibreTheme
+import com.santi.mercadolibre.utils.imageConverter
+import com.santi.mercadolibre.utils.toCurrencyString
 
 @Composable
 fun ProductItemView(
-    product: ResponseResult
+    product: ResponseResult,
+    navController: NavController
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .padding(10.dp)
             .fillMaxWidth()
-            .clickable {  }
+            .clickable {
+                navController.navigate(route = AppScreens.DetailScreen.route + "/${product.id}")
+            }
     ) {
         Box(
             modifier = Modifier
@@ -37,24 +41,22 @@ fun ProductItemView(
                 .background(MaterialTheme.colors.onBackground)
         ) {
             AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(product.thumbnail)
-                    .transformations(CircleCropTransformation())
-                    .build(),
-                contentDescription = "",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize()
+                model = product.thumbnail.imageConverter(),
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop
             )
         }
         Spacer(modifier = Modifier.width(10.dp))
         Column() {
             Text(
                 product.title.toString(),
-                color = MaterialTheme.colors.onBackground
+                color = MaterialTheme.colors.onBackground,
+                maxLines = 2
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                product.price.toString(),
+                product.price.toCurrencyString(),
                 color = MaterialTheme.colors.onBackground
             )
         }
@@ -68,11 +70,12 @@ fun DefaultPreview() {
     val product = ResponseResult(
         id = "0",
         title = "Celular",
-        price = "$ 202.0202.000",
+        price = 2020202000,
         thumbnail = "Image",
     )
-
+    val navController = rememberNavController()
     MercadoLibreTheme {
-        ProductItemView(product)
+        ProductItemView(product, navController)
     }
 }
+

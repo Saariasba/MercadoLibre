@@ -6,13 +6,14 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import com.santi.mercadolibre.models.ResponseResult
 
 @Composable
-fun ProductsList(products: List<ResponseResult>) {
+fun ProductsList(products: List<ResponseResult>, navController: NavController) {
     LazyColumn(modifier = Modifier.background(MaterialTheme.colors.background)) {
         items(products) { product ->
-            ProductItemView(product)
+            ProductItemView(product, navController)
         }
     }
 }

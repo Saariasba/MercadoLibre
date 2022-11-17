@@ -15,7 +15,7 @@ data class ResponsePaging(
 data class ResponseResult(
     val id: String? = "",
     val site_id: String? = "",
-    val price: String? = "",
+    val price: Int? = 0,
     val title: String? = "",
     val thumbnail: String? = ""
 )
