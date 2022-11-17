@@ -7,4 +7,6 @@ class MainRepository @Inject constructor(
     private val apiHelper: ApiHelper
 ) {
     suspend fun getSearch(keyword: String) = apiHelper.getSearch(keyword)
+
+    suspend fun getProduct(id: String) = apiHelper.getProduct(id)
 }
