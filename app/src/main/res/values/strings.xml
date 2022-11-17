@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MercadoLibre</string>
-    <string name="title_activity_detail">DetailActivity</string>
+    <string name="search_into_meli">Buscar en MercadoLibre</string>
+    <string name="unexpected_error">Ocurrió un error inesperado</string>
+    <string name="back">Volver</string>
+    <!--- Content Descriptions -->
+    <string name="image_product">Imagen de producto</string>
+    <string name="search_icon">Icono de busqueda</string>
 </resources>

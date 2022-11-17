@@ -2,6 +2,7 @@ package com.santi.mercadolibre.utils
 
 import java.text.DecimalFormat
 
+//Funciones para hacer cambios en variables
 fun String?.imageConverter(): String {
     return this?.substring(0, 4) + "s" + this?.substring(4, this.length)
 }

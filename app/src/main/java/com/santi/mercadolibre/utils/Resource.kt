@@ -1,5 +1,6 @@
 package com.santi.mercadolibre.utils
 
+//Clase principal para el manejo de estados
 data class Resource<out T>(
     val status: Status,
     val data: T?,

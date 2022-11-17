@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -20,7 +21,9 @@ import com.santi.mercadolibre.navigation.AppScreens
 import com.santi.mercadolibre.ui.theme.MercadoLibreTheme
 import com.santi.mercadolibre.utils.imageConverter
 import com.santi.mercadolibre.utils.toCurrencyString
+import com.santi.mercadolibre.R
 
+//Componente de los items de los productos
 @Composable
 fun ProductItemView(
     product: ResponseResult,
@@ -42,7 +45,7 @@ fun ProductItemView(
         ) {
             AsyncImage(
                 model = product.thumbnail.imageConverter(),
-                contentDescription = null,
+                contentDescription = stringResource(id = R.string.image_product),
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
@@ -63,6 +66,7 @@ fun ProductItemView(
     }
 }
 
+//Componente de visualización
 @Preview(showSystemUi = true)
 @Preview(showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable

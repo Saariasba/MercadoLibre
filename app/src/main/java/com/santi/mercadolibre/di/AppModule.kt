@@ -4,6 +4,7 @@ import com.santi.mercadolibre.BuildConfig
 import com.santi.mercadolibre.api.ApiHelper
 import com.santi.mercadolibre.api.ApiHelperImpl
 import com.santi.mercadolibre.api.ApiService
+import com.santi.mercadolibre.utils.URL_BASE
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,12 +15,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+//Modulo que provee a la aplicación de consumir servicios a través de Retrofit
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
     @Provides
-    fun provideBaseUrl() = "https://api.mercadolibre.com"
+    fun provideBaseUrl() = URL_BASE
 
     @Singleton
     @Provides

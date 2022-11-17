@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.santi.mercadolibre.models.ResponseResult
 
+//Componente que lista los productos buscados
 @Composable
 fun ProductsList(products: List<ResponseResult>, navController: NavController) {
     LazyColumn(modifier = Modifier.background(MaterialTheme.colors.background)) {

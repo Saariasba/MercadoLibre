@@ -5,6 +5,7 @@ import com.santi.mercadolibre.models.SearchResponse
 import retrofit2.Response
 import javax.inject.Inject
 
+//Implementación de ApiHelper
 class ApiHelperImpl @Inject constructor(
     private val apiService: ApiService
 ) : ApiHelper {

@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
@@ -20,7 +19,7 @@ import androidx.compose.ui.unit.dp
 @Preview(showSystemUi = true)
 @Preview(showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun ListSearchShimmer() {
+fun DetailShimmer() {
 
     val gradient = listOf(
         Color.LightGray.copy(alpha = 0.9f),
@@ -49,45 +48,70 @@ fun ListSearchShimmer() {
         )
     )
 
-    Row(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colors.background)
-            .padding(all = 10.dp), verticalAlignment = Alignment.Top
+            .padding(all = 10.dp)
     ) {
         Spacer(
             modifier = Modifier
-                .size(80.dp)
+                .fillMaxWidth()
+                .height(250.dp)
                 .clip(RoundedCornerShape(10.dp))
+                .padding(bottom = 10.dp)
                 .background(brush)
         )
         Spacer(modifier = Modifier.width(10.dp))
-        Column(verticalArrangement = Arrangement.Center) {
-            Spacer(
-                modifier = Modifier
-                    .height(20.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .fillMaxWidth(fraction = 0.5f)
-                    .background(brush)
-            )
+        Spacer(
+            modifier = Modifier
+                .height(20.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .fillMaxWidth(fraction = 0.5f)
+                .background(brush)
+        )
 
-            Spacer(modifier = Modifier.height(10.dp))
-            Spacer(
-                modifier = Modifier
-                    .height(20.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .fillMaxWidth(fraction = 0.7f)
-                    .background(brush)
-            )
+        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(
+            modifier = Modifier
+                .height(20.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .fillMaxWidth(fraction = 0.7f)
+                .background(brush)
+        )
 
-            Spacer(modifier = Modifier.height(10.dp))
-            Spacer(
-                modifier = Modifier
-                    .height(20.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .fillMaxWidth(fraction = 0.9f)
-                    .background(brush)
-            )
-        }
+        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(
+            modifier = Modifier
+                .height(20.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .fillMaxWidth(fraction = 0.9f)
+                .background(brush)
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(
+            modifier = Modifier
+                .height(20.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .fillMaxWidth(fraction = 0.5f)
+                .background(brush)
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(
+            modifier = Modifier
+                .height(20.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .fillMaxWidth(fraction = 0.7f)
+                .background(brush)
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(
+            modifier = Modifier
+                .height(20.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .fillMaxWidth(fraction = 0.9f)
+                .background(brush)
+        )
     }
 }

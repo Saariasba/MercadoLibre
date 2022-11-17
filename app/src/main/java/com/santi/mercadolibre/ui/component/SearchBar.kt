@@ -12,10 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import com.santi.mercadolibre.R
 import com.santi.mercadolibre.viewmodels.MainViewModel
 
-
+//Componente de la barra de busqueda principal
 @Composable
 fun SearchBar(
     mainViewModel: MainViewModel
@@ -27,13 +29,13 @@ fun SearchBar(
         leadingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,
-                contentDescription = "emailIcon"
+                contentDescription = stringResource(id = R.string.search_icon)
             )
         },
         textStyle = TextStyle(color = MaterialTheme.colors.onBackground),
         placeholder = {
             Text(
-                text = "Buscar en MercadoLibre",
+                text = stringResource(id = R.string.search_into_meli),
                 color = MaterialTheme.colors.onBackground
             )
         },

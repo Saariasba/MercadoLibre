@@ -1,6 +1,7 @@
 package com.santi.mercadolibre.ui.component
 
 import android.content.res.Configuration
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -9,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,19 +21,28 @@ import com.santi.mercadolibre.viewmodels.DetailViewModel
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.santi.mercadolibre.models.ProductResponse
+import com.santi.mercadolibre.utils.DEBUG
+import com.santi.mercadolibre.utils.ERROR
 import com.santi.mercadolibre.utils.Status
 import com.santi.mercadolibre.utils.toCurrencyString
+import com.santi.mercadolibre.R
 
-
+//Componente Principal del Detalle del Producto
 @Composable
 fun DetailComponent(navController: NavController, id: String?) {
     val detailViewModel = hiltViewModel<DetailViewModel>()
     detailViewModel.getProduct(id.toString())
     val product = detailViewModel.product.collectAsState().value
     when (product.status) {
-        Status.LOADING -> ListSearchShimmer()
-        Status.SUCCESS -> product.data?.let { ProductView(it) }
-        else -> ListSearchShimmer()
+        Status.LOADING -> DetailShimmer()
+        Status.SUCCESS -> {
+            Log.d(DEBUG, product.data.toString())
+            product.data?.let { ProductView(it) }
+        }
+        Status.ERROR -> {
+            Log.e(ERROR, product.data.toString())
+            NoResults(navController = navController)
+        }
     }
 }
 
@@ -50,7 +61,7 @@ fun ProductView(product: ProductResponse) {
         ) {
             AsyncImage(
                 model = product.pictures.firstOrNull()?.secure_url,
-                contentDescription = null,
+                contentDescription = stringResource(id = R.string.image_product),
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
@@ -78,6 +89,7 @@ fun ProductView(product: ProductResponse) {
     }
 }
 
+//Componente de visualización
 @Preview(showSystemUi = true)
 @Preview(showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
