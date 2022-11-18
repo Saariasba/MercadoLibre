@@ -6,6 +6,7 @@ Aplicación hecha como prueba tecnica para MercadoLibre, usando la Api de Mercad
 # 1. Arquitectura:
 
   Se usó la arquitectura MVVM ya que es facil de hacer pruebas y es buena reduciendo la cantidad de codigo que se debe jacer para conectar la vista con el modelo.
+  
 ![Image text](https://s3.ap-south-1.amazonaws.com/mindorks-server-uploads/mvvm.png)
 
 # 2. Tecnologias:
