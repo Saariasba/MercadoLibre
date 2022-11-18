@@ -27,5 +27,3 @@ Aplicación hecha como prueba tecnica para MercadoLibre, usando la Api de Mercad
  
 # Aplicación:
 
-# Licencia:
-
