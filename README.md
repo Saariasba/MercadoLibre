@@ -29,4 +29,4 @@ Aplicación hecha como prueba tecnica para MercadoLibre, usando la Api de Mercad
 https://github.com/Saariasba/MercadoLibre/blob/main/assets/MercadoLibre.apk
 
 # Video Demo
-
+https://github.com/Saariasba/MercadoLibre/blob/main/assets/VideoApp.mp4
