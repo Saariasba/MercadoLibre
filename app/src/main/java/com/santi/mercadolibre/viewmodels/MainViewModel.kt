@@ -33,6 +33,10 @@ class MainViewModel @Inject constructor(
         getCategories()
     }
 
+    fun setKeyword(keyword: String) {
+        _keyword.value = keyword
+    }
+
     //Llamado de servicio por Coroutine para obtener productos
     fun getSearch(keyword: String) = viewModelScope.launch {
         _keyword.value = keyword
@@ -48,11 +52,22 @@ class MainViewModel @Inject constructor(
 
     fun getCategories() = viewModelScope.launch {
         _categories.value = Resource.loading()
-        repository.geCategories().let {
+        repository.getCategories().let {
             if (it.isSuccessful) {
                 _categories.value = Resource.success(it.body())
             } else {
                 _categories.value = Resource.error(it.message(), it.body())
+            }
+        }
+    }
+
+    fun getCategory(id: String) = viewModelScope.launch {
+        _products.value = Resource.loading()
+        repository.getCategory(id).let {
+            if (it.isSuccessful) {
+                _products.value = Resource.success(it.body())
+            } else {
+                _products.value = Resource.error(it.message(), it.body())
             }
         }
     }

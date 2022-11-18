@@ -19,5 +19,6 @@ class ApiHelperImpl @Inject constructor(
     override suspend fun getCategories(): Response<List<CategoriesResponse>> =
         apiService.getCategories()
 
-
+    override suspend fun getCategory(category: String): Response<SearchResponse> =
+        apiService.getCategory(category)
 }

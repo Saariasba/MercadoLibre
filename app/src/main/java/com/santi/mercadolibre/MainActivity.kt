@@ -65,7 +65,7 @@ fun PrincipalComponent(navController: NavController, mainViewModel: MainViewMode
             Status.LOADING -> repeat(8) { ListSearchShimmer() }
             Status.SUCCESS -> {
                 Log.d(DEBUG, categories.data.toString())
-                categories.data?.let { CategoriesList(it, navController) }
+                categories.data?.let { CategoriesList(it, navController, mainViewModel) }
             }
             Status.ERROR -> {
                 Log.e(ERROR, categories.data.toString())

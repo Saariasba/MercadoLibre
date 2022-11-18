@@ -18,4 +18,7 @@ interface ApiService {
 
     @GET("/sites/MCO/categories")
     suspend fun getCategories(): Response<List<CategoriesResponse>>
+
+    @GET("/sites/MCO/search")
+    suspend fun getCategory(@Query("category") category: String): Response<SearchResponse>
 }

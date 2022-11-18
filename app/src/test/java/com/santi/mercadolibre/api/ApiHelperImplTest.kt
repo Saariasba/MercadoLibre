@@ -1,5 +1,6 @@
 package com.santi.mercadolibre.api
 
+import com.santi.mercadolibre.models.CategoriesResponse
 import com.santi.mercadolibre.models.ProductResponse
 import com.santi.mercadolibre.models.SearchResponse
 import junit.framework.Assert.assertEquals
@@ -49,6 +50,24 @@ class ApiHelperImplTest {
         val response = ProductResponse()
         given(apiService.getProduct("id")).willReturn(Response.success(response))
         val data = apiHelperImpl.getProduct("id")
+        assertEquals(response, data.body())
+    }
+
+    @ExperimentalCoroutinesApi
+    @Test
+    fun getCategories() = runTest {
+        val response = CategoriesResponse()
+        given(apiService.getCategories()).willReturn(Response.success(listOf(response)))
+        val data = apiHelperImpl.getCategories()
+        assertEquals(response, data.body())
+    }
+
+    @ExperimentalCoroutinesApi
+    @Test
+    fun getCategory() = runTest {
+        val response = SearchResponse()
+        given(apiService.getCategory("category")).willReturn(Response.success(response))
+        val data = apiHelperImpl.getCategory("category")
         assertEquals(response, data.body())
     }
 }

@@ -20,10 +20,15 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.santi.mercadolibre.R
 import com.santi.mercadolibre.models.CategoriesResponse
+import com.santi.mercadolibre.viewmodels.MainViewModel
 
 //Componente que lista las categorias
 @Composable
-fun CategoriesList(categories: List<CategoriesResponse>, navController: NavController) {
+fun CategoriesList(
+    categories: List<CategoriesResponse>,
+    navController: NavController,
+    mainViewModel: MainViewModel
+) {
     Text(
         text = stringResource(id = R.string.search_into_meli_category),
         color = MaterialTheme.colors.onBackground,
@@ -42,7 +47,11 @@ fun CategoriesList(categories: List<CategoriesResponse>, navController: NavContr
     )
     LazyColumn(modifier = Modifier.background(MaterialTheme.colors.background)) {
         items(categories) { category ->
-            CategoryItemView(category = category, navController = navController)
+            CategoryItemView(
+                category = category,
+                navController = navController,
+                mainViewModel = mainViewModel
+            )
         }
     }
 }

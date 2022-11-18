@@ -11,5 +11,7 @@ class MainRepository @Inject constructor(
 
     suspend fun getProduct(id: String) = apiHelper.getProduct(id)
 
-    suspend fun geCategories() = apiHelper.getCategories()
+    suspend fun getCategories() = apiHelper.getCategories()
+
+    suspend fun getCategory(category: String) = apiHelper.getCategory(category)
 }
