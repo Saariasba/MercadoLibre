@@ -19,15 +19,13 @@ Aplicación hecha como prueba tecnica para MercadoLibre, usando la Api de Mercad
 # Demo:
 
 ![Image text](https://github.com/Saariasba/MercadoLibre/blob/main/assets/uno.png)
-![Image text](https://github.com/Saariasba/MercadoLibre/blob/main/assets/dos.png)
-![Image text](https://github.com/Saariasba/MercadoLibre/blob/main/assets/tres.png)
 
 # Demo Dark: 
  También se tiene la aplicación en su respectivo modo oscuro, para mayor comodidad de ciertos usuarios.
  
 ![Image text](https://github.com/Saariasba/MercadoLibre/blob/main/assets/uno%20dark.png)
-![Image text](https://github.com/Saariasba/MercadoLibre/blob/main/assets/dos%20dark.png)
-![Image text](https://github.com/Saariasba/MercadoLibre/blob/main/assets/tres%20dark.png)
  
+# Aplicación:
+
 # Licencia:
 
