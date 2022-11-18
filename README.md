@@ -17,7 +17,7 @@ Aplicación hecha como prueba tecnica para MercadoLibre, usando la Api de Mercad
  - Coroutines: fue utilizada junto con retrofit para hacer los llamados de los servicios rest.
 
 # Demo:
-![Image text]
-![Image text]
-![Image text]
+![Image text](https://github.com/Saariasba/MercadoLibre/blob/main/assets/uno.png)
+![Image text](https://github.com/Saariasba/MercadoLibre/blob/main/assets/dos.png)
+![Image text](https://github.com/Saariasba/MercadoLibre/blob/main/assets/tres.png)
 
