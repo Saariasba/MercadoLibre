@@ -10,4 +10,6 @@ class MainRepository @Inject constructor(
     suspend fun getSearch(keyword: String) = apiHelper.getSearch(keyword)
 
     suspend fun getProduct(id: String) = apiHelper.getProduct(id)
+
+    suspend fun geCategories() = apiHelper.getCategories()
 }

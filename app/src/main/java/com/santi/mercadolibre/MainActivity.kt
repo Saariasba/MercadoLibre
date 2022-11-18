@@ -42,6 +42,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun PrincipalComponent(navController: NavController, mainViewModel: MainViewModel) {
     val products = mainViewModel.products.collectAsState().value
+    val categories = mainViewModel.categories.collectAsState().value
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -57,6 +58,17 @@ fun PrincipalComponent(navController: NavController, mainViewModel: MainViewMode
             }
             Status.ERROR -> {
                 Log.e(ERROR, products.data.toString())
+                NoResults(navController = navController)
+            }
+        }
+        when (categories.status) {
+            Status.LOADING -> repeat(8) { ListSearchShimmer() }
+            Status.SUCCESS -> {
+                Log.d(DEBUG, categories.data.toString())
+                categories.data?.let { CategoriesList(it, navController) }
+            }
+            Status.ERROR -> {
+                Log.e(ERROR, categories.data.toString())
                 NoResults(navController = navController)
             }
         }

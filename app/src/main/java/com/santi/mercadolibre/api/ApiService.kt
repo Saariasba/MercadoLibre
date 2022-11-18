@@ -1,5 +1,6 @@
 package com.santi.mercadolibre.api
 
+import com.santi.mercadolibre.models.CategoriesResponse
 import com.santi.mercadolibre.models.ProductResponse
 import com.santi.mercadolibre.models.SearchResponse
 import retrofit2.Response
@@ -14,4 +15,7 @@ interface ApiService {
 
     @GET("/items/{id}")
     suspend fun getProduct(@Path("id") id: String): Response<ProductResponse>
+
+    @GET("/sites/MCO/categories")
+    suspend fun getCategories(): Response<List<CategoriesResponse>>
 }

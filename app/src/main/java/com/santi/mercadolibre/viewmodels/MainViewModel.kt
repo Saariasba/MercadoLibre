@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.santi.mercadolibre.models.CategoriesResponse
 import com.santi.mercadolibre.models.SearchResponse
 import com.santi.mercadolibre.repository.MainRepository
 import com.santi.mercadolibre.utils.Resource
@@ -25,6 +26,13 @@ class MainViewModel @Inject constructor(
     private val _products = MutableStateFlow(Resource.success(SearchResponse()))
     val products: StateFlow<Resource<SearchResponse>> get() = _products
 
+    private val _categories = MutableStateFlow(Resource.success(listOf(CategoriesResponse())))
+    val categories: StateFlow<Resource<List<CategoriesResponse>>> get() = _categories
+
+    init {
+        getCategories()
+    }
+
     //Llamado de servicio por Coroutine para obtener productos
     fun getSearch(keyword: String) = viewModelScope.launch {
         _keyword.value = keyword
@@ -34,6 +42,17 @@ class MainViewModel @Inject constructor(
                 _products.value = Resource.success(it.body())
             } else {
                 _products.value = Resource.error(it.message(), it.body())
+            }
+        }
+    }
+
+    fun getCategories() = viewModelScope.launch {
+        _categories.value = Resource.loading()
+        repository.geCategories().let {
+            if (it.isSuccessful) {
+                _categories.value = Resource.success(it.body())
+            } else {
+                _categories.value = Resource.error(it.message(), it.body())
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.santi.mercadolibre.api
 
+import com.santi.mercadolibre.models.CategoriesResponse
 import com.santi.mercadolibre.models.ProductResponse
 import com.santi.mercadolibre.models.SearchResponse
 import retrofit2.Response
@@ -14,5 +15,9 @@ class ApiHelperImpl @Inject constructor(
 
     override suspend fun getProduct(id: String): Response<ProductResponse> =
         apiService.getProduct(id)
+
+    override suspend fun getCategories(): Response<List<CategoriesResponse>> =
+        apiService.getCategories()
+
 
 }
