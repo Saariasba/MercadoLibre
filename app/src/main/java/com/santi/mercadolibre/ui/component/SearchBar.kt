@@ -16,7 +16,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.SemanticsProperties.ImeAction
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.TextStyle
 import com.santi.mercadolibre.R
 import com.santi.mercadolibre.viewmodels.MainViewModel
@@ -31,6 +31,9 @@ fun SearchBar(
     TextField(
         value = keyword,
         onValueChange = { mainViewModel.getSearch(it) },
+        keyboardOptions = KeyboardOptions(
+            imeAction = ImeAction.Search
+        ),
         keyboardActions = KeyboardActions(
             onSearch = {
                 focusManager.clearFocus()
