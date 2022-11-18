@@ -5,7 +5,7 @@ Aplicación hecha como prueba tecnica para MercadoLibre, usando la Api de Mercad
 
 # Arquitectura:
 
-  Se usó la arquitectura MVVM ya que es facil de hacer pruebas y es buena reduciendo la cantidad de codigo que se debe jacer para conectar la vista con el modelo.
+  Se usó la arquitectura MVVM ya que es facil de hacer pruebas y es buena reduciendo la cantidad de codigo que se debe hacer para conectar la vista con el modelo.
   
 ![Image text](https://s3.ap-south-1.amazonaws.com/mindorks-server-uploads/mvvm.png)
 
@@ -17,7 +17,13 @@ Aplicación hecha como prueba tecnica para MercadoLibre, usando la Api de Mercad
  - Coroutines: fue utilizada junto con retrofit para hacer los llamados de los servicios rest.
 
 # Demo:
-![Image text]
-![Image text]
-![Image text]
+
+![Image text](https://github.com/Saariasba/MercadoLibre/blob/main/assets/uno.png)
+
+# Demo Dark: 
+ También se tiene la aplicación en su respectivo modo oscuro, para mayor comodidad de ciertos usuarios.
+ 
+![Image text](https://github.com/Saariasba/MercadoLibre/blob/main/assets/uno%20dark.png)
+ 
+# Aplicación:
 
