@@ -2,6 +2,8 @@ package com.santi.mercadolibre.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -12,7 +14,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.SemanticsProperties.ImeAction
 import androidx.compose.ui.text.TextStyle
 import com.santi.mercadolibre.R
 import com.santi.mercadolibre.viewmodels.MainViewModel
@@ -23,9 +27,15 @@ fun SearchBar(
     mainViewModel: MainViewModel
 ) {
     val keyword: String by mainViewModel.keyword.observeAsState(initial = "")
+    val focusManager = LocalFocusManager.current
     TextField(
         value = keyword,
         onValueChange = { mainViewModel.getSearch(it) },
+        keyboardActions = KeyboardActions(
+            onSearch = {
+                focusManager.clearFocus()
+            }
+        ),
         leadingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,
